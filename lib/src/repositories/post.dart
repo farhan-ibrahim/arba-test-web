@@ -86,7 +86,7 @@ class PostRepository {
     }
   }
 
-  Future<bool> deletePost(int id, String token) async {
+  Future<bool> deletePost(String id, String token) async {
     // Delete post in API
     final url = Uri.parse('$address/post/delete/$id');
     print("Make request from $url");
@@ -109,7 +109,7 @@ class PostRepository {
     }
   }
 
-  Future<Comment> addComment(int postId, String text, String token) async {
+  Future<Comment> addComment(String postId, String text, String token) async {
     // Add comment in API
     final comment = <String, dynamic>{
       "post_id": postId,

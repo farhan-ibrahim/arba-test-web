@@ -1,8 +1,8 @@
 class Comment {
-  int userId;
+  String userId;
   String text;
-  int? id;
-  int? postId;
+  String? id;
+  String? postId;
   String? author;
 
   Comment({

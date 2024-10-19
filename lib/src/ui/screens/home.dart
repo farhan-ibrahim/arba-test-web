@@ -111,7 +111,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     context,
                     PostDetailScreen.routeName,
                     arguments: post,
-                  );
+                  ).then((_) {
+                    // This is a hack to refresh the page
+                    setState(() {});
+                    context.read<PostCubit>().getAll();
+                  });
                 },
                 child: GridTile(
                   header: Container(

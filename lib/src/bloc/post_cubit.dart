@@ -26,6 +26,15 @@ class PostCubit extends Cubit<PostState> {
 
   PostCubit(this.authCubit) : super(const PostState());
 
+  void getAll() async {
+    try {
+      await PostRepository().fetchPosts();
+      emit(const PostState());
+    } catch (e) {
+      emit(PostState.copyWith(error: "An error occurred: ${e.toString()}"));
+    }
+  }
+
   void add(String imageUrl, String caption) async {
     try {
       final currentUser = authCubit.state.user;
@@ -44,7 +53,7 @@ class PostCubit extends Cubit<PostState> {
     }
   }
 
-  void update(int postId, String imageUrl, String caption) async {
+  void update(String postId, String imageUrl, String caption) async {
     try {
       final currentUser = authCubit.state.user;
       if (currentUser == null) {
@@ -60,7 +69,7 @@ class PostCubit extends Cubit<PostState> {
     }
   }
 
-  void delete(int postId) async {
+  void delete(String postId) async {
     try {
       final currentUser = authCubit.state.user;
       if (currentUser == null) {

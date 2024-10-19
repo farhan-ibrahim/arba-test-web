@@ -2,10 +2,10 @@ import 'package:arba_test_web/src/model/comment.dart';
 import 'package:arba_test_web/src/model/user.dart';
 
 class Post {
-  final int id;
+  final String id;
   final String image;
   final String caption;
-  int? userId;
+  String? userId;
   String? author;
   User? user;
   List<Comment>? comments;

@@ -100,7 +100,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                           }).then((_) {
                         // This is a hack to refresh the page
                         setState(() {});
-                        context.read<PostCubit>().reset();
+                        context.read<PostCubit>().getAll();
                       });
                     },
                     child: const Icon(Icons.comment),

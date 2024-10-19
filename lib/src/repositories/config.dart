@@ -1,3 +1,3 @@
-class Config {
-  static const String apiURL = 'http://localhost:3000';
+final class Config {
+  static const apiURL = String.fromEnvironment('REST_API_URL');
 }
