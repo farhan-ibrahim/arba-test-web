@@ -97,8 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
           return GridView.builder(
             itemCount: snapshot.data!.data.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 300.0,
               crossAxisSpacing: 5.0,
               mainAxisSpacing: 5.0,
             ),
