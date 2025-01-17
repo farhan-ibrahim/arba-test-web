@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:arba_test_web/src/model/comment.dart';
 import 'package:arba_test_web/src/model/post.dart';
@@ -70,7 +71,7 @@ class PostRepository {
     };
 
     final url = Uri.parse('$address/post/update/${post.id}');
-    print("Make request from $url");
+    log("Make request from $url");
 
     final response = await http.put(
       url,
@@ -78,7 +79,7 @@ class PostRepository {
       body: jsonEncode(post.toJson()),
     );
 
-    print("Response status: ${response.statusCode}");
+    log("Response status: ${response.statusCode}");
     if (response.statusCode == 200) {
       return Post.fromJson(jsonDecode(response.body)["data"]);
     } else {
@@ -89,7 +90,7 @@ class PostRepository {
   Future<bool> deletePost(String id, String token) async {
     // Delete post in API
     final url = Uri.parse('$address/post/delete/$id');
-    print("Make request from $url");
+    log("Make request from $url");
 
     final headers = <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -101,7 +102,7 @@ class PostRepository {
       headers: headers,
     );
 
-    print("Response status: ${response.statusCode}");
+    log("Response status: ${response.statusCode}");
     if (response.statusCode == 200) {
       return true;
     } else {
